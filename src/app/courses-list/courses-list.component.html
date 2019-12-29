@@ -1,0 +1,15 @@
+<div>
+    <ul class="list-group">
+        <li *ngFor='let course of courses'
+            (click)='onSelectCourse(course)'
+            class="list-group-item"
+            [class.active]='isSelected(course)'>
+            <p>
+                <b>{{course.name}}</b> is placed in <b>{{course.local}}</b> since <b>{{course.openingYear}}</b>. 
+                A pair <b>{{course.pairs}}</b> course with <b>{{course.holes}}</b> holes.
+                <span *ngIf='course.isClubHouse'>It's a club house.</span>
+                <span *ngIf='course.isAcademy'>With academy.</span>
+            </p>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,13 @@
+<div>
+    <ul class="list-group">
+        <li *ngFor='let accommodation of accommodations'
+            (click)='onSelectAccommodation(accommodation)'
+            class="list-group-item"
+            [class.active]='isSelected(accommodation)'>
+            <p>
+                <b>{{accommodation.name}}</b> is placed in <b>{{accommodation.local}}</b> with capacity to <b>{{accommodation.capacity}}</b> people. 
+            </p>
+        </li>
+    </ul>
+</div>
+    
