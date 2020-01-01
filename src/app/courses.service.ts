@@ -8,12 +8,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class CoursesService {
 
-  private serviceUrl = 'api/courses';
+  // private serviceUrl = 'api/courses';
+  private serviceUrl = 'https://golftour-server.herokuapp.com/courses/list';
 
   constructor(private http: HttpClient) { }
 
   getCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>(this.serviceUrl);
+    var httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    return this.http.get<Course[]>(this.serviceUrl, httpOptions);
   }
 
 }
