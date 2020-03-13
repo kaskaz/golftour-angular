@@ -62,9 +62,9 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, {dataEncapsulation: false}
-    ),
+    // HttpClientInMemoryWebApiModule.forRoot(
+    //   InMemoryDataService, {dataEncapsulation: false}
+    // ),
 //    AppRoutingModule,
     RouterModule.forRoot(appRoutes)
   ],
