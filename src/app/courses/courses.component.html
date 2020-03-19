@@ -1,3 +1,7 @@
 <div class="container">
-    <app-courses-list [courses]='coursesList'></app-courses-list>
+    <app-courses-list 
+        [courses]='coursesList' 
+        [selected]='coursesSelected'
+        (selectedCoursesEvent)='receiveSelectedCourses($event)'>
+    </app-courses-list>
 </div>

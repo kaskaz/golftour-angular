@@ -11,13 +11,25 @@ export class CoursesService {
 
   private serviceUrl = environment.serverUrl;
 
-  constructor(private http: HttpClient) { }
+  private selectedCourses: Observable<Course[]>;
+
+  constructor(private http: HttpClient) { 
+    this.selectedCourses = of([]);
+  }
 
   getCourses(): Observable<Course[]> {
     var httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
     return this.http.get<Course[]>(this.serviceUrl + '/courses/list');
+  }
+
+  setSelectedCourses(courses: Course[]) {
+    this.selectedCourses = of(courses);
+  }
+
+  getSelectedCourses(): Observable<Course[]> {
+    return this.selectedCourses;
   }
 
 }

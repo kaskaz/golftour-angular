@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Accommodation } from '../models/accommodation';
 import { AccommodationsService } from '../accommodations.service';
+import { CoursesService } from '../courses.service';
+import { Course } from '../models/course';
+import { CourseAccommodations } from '../models/course-accommodations';
 
 @Component({
   selector: 'app-accommodations',
@@ -9,17 +11,27 @@ import { AccommodationsService } from '../accommodations.service';
 })
 export class AccommodationsComponent implements OnInit {
 
-  accommodationsList: Accommodation[];
+  courseAccommodations: CourseAccommodations[];
+  coursesSelected: Course[];
 
-  constructor(private accommodationsService: AccommodationsService) { }
+  constructor(
+    private accommodationsService: AccommodationsService,
+    private coursesService: CoursesService) { }
 
   ngOnInit() {
+    this.getSelectedCourses();
     this.getAccommodations();
   }
 
+  getSelectedCourses(): void {
+    this.coursesService.getSelectedCourses()
+      .subscribe(courses => this.coursesSelected = courses);
+  }
+
   getAccommodations(): void {
-    this.accommodationsService.getAccommodations()
-      .subscribe(accommodations => this.accommodationsList = accommodations);
+    var courseIds = this.coursesSelected.map(c => c.id);
+    this.accommodationsService.getAccommodationsNear(courseIds)
+      .subscribe(courseAccommodations => this.courseAccommodations = courseAccommodations);
   }
   
 }

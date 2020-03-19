@@ -2,7 +2,8 @@ export class Accommodation {
     id: number;
     name: string;
     type: string;
-    capacity: number;
+    capacity: number; //clear
+    numOfGuests: number
     address: string;
     local: string;
     county: string;

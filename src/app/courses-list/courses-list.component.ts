@@ -11,13 +11,13 @@ export class CoursesListComponent implements OnInit {
   @Input() 
   courses: Course[];
   
-  @Output('selected-courses')
+  @Output()
   selectedCoursesEvent: EventEmitter<Course[]> = new EventEmitter<Course[]>();
 
-  selectedCourses: Course[];
+  @Input()
+  selected: Course[];
 
-  constructor() { 
-    this.selectedCourses = [];
+  constructor() {
   }
 
   ngOnInit() {
@@ -25,15 +25,15 @@ export class CoursesListComponent implements OnInit {
 
   onSelectCourse(course: Course) {
     if (this.isSelected(course)) {
-      this.selectedCourses = this.selectedCourses.filter(c => c.id != course.id);
+      this.selected = this.selected.filter(c => c.id != course.id);
     } else {
-      this.selectedCourses.push(course);
+      this.selected.push(course);
     }
-    this.selectedCoursesEvent.emit(this.selectedCourses);
+    this.selectedCoursesEvent.emit(this.selected);
   }
 
   isSelected(course: Course) {
-    return this.selectedCourses.includes(course);
+    return this.selected.find(c => c.id == course.id) != undefined;
   }
 
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Accommodation } from '../models/accommodation';
+import { CourseAccommodations } from '../models/course-accommodations';
+import { Course } from '../models/course';
 
 @Component({
   selector: 'app-accommodations-list',
@@ -9,7 +11,10 @@ import { Accommodation } from '../models/accommodation';
 export class AccommodationsListComponent implements OnInit {
 
   @Input() 
-  accommodations: Accommodation[];
+  courseAccommodations: CourseAccommodations[];
+
+  @Input()
+  coursesSelected: Course[];
   
   @Output('selected-accommodations')
   selectedAccommodationsEvent: EventEmitter<Accommodation[]> = new EventEmitter<Accommodation[]>();
@@ -23,17 +28,25 @@ export class AccommodationsListComponent implements OnInit {
   ngOnInit() {
   }
 
+  getCourse(id: number): Course {
+    return this.coursesSelected.find(c => c.id == id);
+  }
+
   onSelectAccommodation(accommodation: Accommodation) {
     if (this.isSelected(accommodation)) {
-      this.selectedAccommodations = this.selectedAccommodations.filter(c => c.id != accommodation.id);
+      this.selectedAccommodations = this.selectedAccommodations.filter(a => a.id != accommodation.id);
     } else {
       this.selectedAccommodations.push(accommodation);
     }
     this.selectedAccommodationsEvent.emit(this.selectedAccommodations);
   }
 
-  isSelected(accommodation: Accommodation) {
-    return this.selectedAccommodations.includes(accommodation);
+  isSelected(accommodation: Accommodation): boolean {
+    return this.selectedAccommodations.find(a => a.id == accommodation.id) != undefined;
+  }
+
+  hasSelections(): boolean {
+    return this.coursesSelected.length > 0;
   }
 
 }
