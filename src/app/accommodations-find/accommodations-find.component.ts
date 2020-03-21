@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccommodationsFindComponent implements OnInit {
 
-  private distance: number;
-  private showDistance: boolean;
+  public distance: number;
+  public showDistance: boolean;
 
   constructor() { }
 
