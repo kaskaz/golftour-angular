@@ -14,6 +14,7 @@ import { AccommodationsComponent } from './accommodations/accommodations.compone
 import { AccommodationsListComponent } from './accommodations-list/accommodations-list.component';
 import { SummaryComponent } from './summary/summary.component';
 import { Routes, RouterModule } from '@angular/router';
+import { AccommodationsFindComponent } from './accommodations-find/accommodations-find.component';
 
 const appRoutes: Routes = [
   {
@@ -57,7 +58,8 @@ const appRoutes: Routes = [
     CoursesPipePipe,
     AccommodationsComponent,
     AccommodationsListComponent,
-    SummaryComponent
+    SummaryComponent,
+    AccommodationsFindComponent
   ],
   imports: [
     BrowserModule,

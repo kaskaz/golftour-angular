@@ -1,9 +1,11 @@
 <div *ngIf="!hasSelections(); then showEmpty else showSelections"></div>
 <ng-template #showEmpty>
-    <h5 class="text-center mt-5">Select courses first!</h5>
+    <div class="content" style="overflow-y: unset;">
+        <h5 class="text-center mt-5">Select courses first!</h5>
+    </div>
 </ng-template>
 <ng-template #showSelections>
-    <div class="accordion list" id="accommodationsList" #showSelections>
+    <div class="accordion content" id="accommodationsList" #showSelections>
         <div *ngFor="let ca of courseAccommodations" class="card">
             <div class="card-header" id="ca{{ca.courseId}}">
                 <h2 class="mb-0">
