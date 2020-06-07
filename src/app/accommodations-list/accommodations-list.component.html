@@ -20,6 +20,13 @@
             <div id="collapseCa{{ca.courseId}}" class="collapse" [attr.aria-labelledby]="'ca' + ca.courseId" data-parent="#accommodationsList">
                 <div class="card-body">
                     <div class="row justify-content-md-around justify-content-sm-around">
+                        <div *ngIf='hasNoAccommodations(ca)'>
+                            <div class="text-center">
+                                No accommodations found near <b>{{getCourse(ca.courseId).name}}</b>. 
+                                <br>
+                                Maybe you should change between filters.
+                            </div>
+                        </div>
                         <div *ngFor='let accommodation of ca.accommodations' class="col-md-3 col-sm-6 mb-2">
                             <div class="card card-body text-center accommodation"
                                 (click)='onSelectAccommodation(accommodation)'

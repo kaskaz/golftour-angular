@@ -3,19 +3,19 @@
         <div class="form-group">
             <div class="btn-group btn-group-toggle d-flex justify-content-center" data-toggle="buttons">
                 <label class="btn btn-primary active">
-                  <input type="radio" name="options" id="local" (click)='showDistance = false' checked> Local
+                  <input type="radio" name="options" id="localOpt" (click)='onChangeFilter($event)' checked> Local
                 </label>
                 <label class="btn btn-primary">
-                  <input type="radio" name="options" id="county" (click)='showDistance = false'> County
+                  <input type="radio" name="options" id="countyOpt" (click)='onChangeFilter($event)'> County
                 </label>
                 <label class="btn btn-primary">
-                  <input type="radio" name="options" id="distance" (click)='showDistance = true'> Distance
+                  <input type="radio" name="options" id="distanceOpt" (click)='onChangeFilter($event)'> Distance
                 </label>
             </div>
         </div>
         <div *ngIf="showDistance" class="form-group text-center">
             <label for="selector">{{distance}} km</label>
-            <input type="range" class="custom-range" value="1" min="1" max="10" step="1" id="selector" (click)=changeDistance($event)>
+            <input type="range" class="custom-range" value={{distance}} min="1" max="10" step={{sliderStep}} id="selector" (click)='changeDistance($event)'>
         </div>
     </form>
 </div>

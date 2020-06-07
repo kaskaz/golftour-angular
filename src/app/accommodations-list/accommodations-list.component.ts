@@ -49,4 +49,8 @@ export class AccommodationsListComponent implements OnInit {
     return this.coursesSelected.length > 0;
   }
 
+  hasNoAccommodations(ca: CourseAccommodations): boolean {
+    return ca.accommodations == undefined || ca.accommodations.length == 0;
+  }
+
 }

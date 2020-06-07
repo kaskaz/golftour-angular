@@ -24,8 +24,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "src/bootstrap.min.css"
+              "src/bootstrap.min.css",
+              "src/styles.css"
             ],
             "scripts": [
               "src/assets/js/jquery-3.4.1.min.js",
